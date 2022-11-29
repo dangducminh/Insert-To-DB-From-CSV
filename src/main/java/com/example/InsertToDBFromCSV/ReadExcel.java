@@ -38,10 +38,10 @@ public class ReadExcel {
 					Cell currentCell = cellIterator.next();
 					//getCellTypeEnum shown as deprecated for version 3.15
 					//getCellTypeEnum ill be renamed to getCellType starting from version 4.0
-					if (currentCell.getStringCellValue().equals("DELIVERY BATCH")) {
+					if (currentCell.getCellTypeEnum() == CellType.STRING&&currentCell.getStringCellValue().equals("DELIVERY BATCH")) {
 						check = false;
 						break;
-					};
+					}
 					if (index==0){
 						//DELIVERY BATCH
 					index++;
@@ -636,6 +636,7 @@ public class ReadExcel {
 				}
 				if (check) componentEntityList.add(componentEntity);
 			}
+
 			return componentEntityList;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
